@@ -1,0 +1,29 @@
+-- select state,year,tempf,tempc, AVG(tempc) over(
+-- partition by state order by year) as running_avg_temp
+-- from state_climate;
+
+-- select state,year,tempf,tempc, first_value(tempc) over(
+-- partition by state order by tempc) as running_avg_temp
+-- from state_climate;
+
+-- select state,year,tempf,tempc, first_value(tempc) over(
+-- partition by state order by tempc desc) as running_avg_temp
+-- from state_climate;
+
+-- select state,year,tempf,tempc, tempc - lag(tempc,1,tempc) 
+-- over(
+-- partition by state order by year) as change_in_temp
+-- from state_climate
+-- order by change_in_temp desc;
+
+-- select year,state,tempc, rank() over (order by tempc asc) as 'coldest_rank'
+-- from state_climate;
+
+-- select year,state,tempc, rank() over (order by tempc desc) as 'warmest_rank'
+-- from state_climate;
+
+-- select ntile(4) over (partition by state order by tempc) as quartile, year,state,tempc
+-- from state_climate;
+
+-- select ntile(5) over (order by tempc) as quintile, year,state,tempc
+-- from state_climate;

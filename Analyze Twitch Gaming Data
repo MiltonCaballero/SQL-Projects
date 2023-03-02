@@ -1,0 +1,46 @@
+-- SELECT game, COUNT(*)
+-- FROM stream
+-- GROUP BY game
+-- ORDER BY 2 DESC;
+
+-- SELECT country, COUNT(*)
+-- FROM stream
+-- WHERE game = 'League of Legends'
+-- GROUP BY 1
+-- ORDER BY 2 DESC;
+
+-- SELECT player, COUNT(*)
+-- FROM stream
+-- GROUP BY 1
+-- ORDER BY 2 DESC;
+
+-- SELECT game, CASE 
+--   WHEN game = 'League of Legends'
+--   THEN 'MOBA'
+--   WHEN game = 'Dota 2'
+--   THEN 'MOBA'
+--   WHEN game = 'Heroes of the Storm'
+--   THEN 'MOBA'
+--   WHEN game = 'DayZ'
+--   THEN 'Survival'
+--   WHEN game = 'ARK: Survival Evolved'
+--   THEN 'Survival'
+--   ELSE 'Other'
+-- END AS genre, COUNT(*) AS 'Count'
+-- FROM stream
+-- GROUP BY 1
+-- ORDER BY 3 DESC;
+
+-- SELECT time
+-- FROM stream
+-- LIMIT 10;
+
+-- SELECT time,
+--    strftime('%H', time) AS 'Hours', COUNT(*)
+-- FROM stream
+-- GROUP BY 2;
+
+SELECT *
+FROM stream AS 'st'
+JOIN chat AS 'ct' 
+ON st.device_id = ct.device_id
